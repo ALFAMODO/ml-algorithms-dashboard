@@ -6,6 +6,7 @@ def app():
 
     st.page_link("app.py", label="Home", icon="🏠")
     st.page_link("pages/linear_regression.py", label="Linear Regression", icon="1️⃣")
+    st.page_link("pages/logistic_regression.py", label="Logistic Regression", icon="1️⃣")
 
 
 if __name__ == "__main__":

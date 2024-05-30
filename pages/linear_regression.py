@@ -17,12 +17,15 @@ st.set_page_config(page_title='The Machine Learning App',
 #---------------------------------#
 # Model building
 def data_process(data):
-    missing_data = data.isnull().sum()
-    missing_values = any(missing_data)
-    if missing_values:
-        st.write('Missing Values Found')
+    missing_data = data[data.isnull().any(axis=1)]
+
+    if missing_data.empty:
+        st.write("✓ No Missing Values Found")
     else:
-        st.write('✓ No Missing Values Found')
+        st.write('Missing Values Found')
+        # Drop rows with null values
+        data = data.dropna()
+        st.write("Missing values have been removed.")
 
     duplicated_data = data.duplicated()
     duplicated_values = duplicated_data.sum()
